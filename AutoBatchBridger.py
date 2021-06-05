@@ -13,7 +13,7 @@ BATCHFILE = 'C:/Users/pellja02/Documents/AutoBatchPython/individual.csv'
 GPGFILE = BATCHFILE + '.gpg'
 
 # variables to send the batch file (encrypted) to Bridger SFTP server.
-SFTPHOSTNAME = 'BridgerFTP.lexisnexis.com'
+SFTPHOSTNAME = 'SFTPHOSTNAME or IP'
 SFTPUSERNAME = 'USERNAME'
 SFTPPASSWORD = 'PASSWORD'
 SFTPPATH = "./LoteTeste/individual.csv.gpg" # the folder must exist
