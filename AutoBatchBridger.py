@@ -7,16 +7,20 @@ import datetime
 
 # variables to encrypt the batch file using Bridger PGP key.
 GPG_BINARY = 'C:/Program Files (x86)/GnuPG/bin/gpg.exe'
-GNUPGHOME = 'C:/Users/pellja02/Documents/AutoBatchPython/'
-ASCFILE = 'C:/Users/pellja02/Documents/AutoBatchPython/BridgerInsightXG.asc' # Bridger PGP Key
-BATCHFILE = 'C:/Users/pellja02/Documents/AutoBatchPython/individual.csv'
-GPGFILE = BATCHFILE + '.gpg'
+GNUPGHOME = 'C:/Users/pellja02/Documents/AutoBatchPython/'  # all files must be here (.asc, .csv)
+
+asc_file = [f for f in os.listdir(GNUPGHOME) if f.endswith('.asc')]
+ASCFILE = GNUPGHOME + asc_file[0] # Bridger PGP key .asc file
+
+csv_file = [f for f in os.listdir(GNUPGHOME) if f.endswith('.csv')]
+BATCHFILE = GNUPGHOME + csv_file[0]
+GPGFILE = BATCHFILE + '.gpg' # the .gpg file will be created here
 
 # variables to send the batch file (encrypted) to Bridger SFTP server.
-SFTPHOSTNAME = 'SFTPHOSTNAME or IP'
+SFTPHOSTNAME = 'BridgerFTP.lexisnexis.com'
 SFTPUSERNAME = 'USERNAME'
 SFTPPASSWORD = 'PASSWORD'
-SFTPPATH = "./LoteTeste/individual.csv.gpg" # the folder must exist
+SFTPPATH = f"./LoteTeste/{csv_file[0]}.gpg" # WARNING! The folder must exist
 SFTPLOG = "C:/Users/pellja02/Documents/AutoBatchPython/sftp.log"
 
 try:
